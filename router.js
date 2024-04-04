@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 	}
 })
 
-router.get('/assets', async (req, res) => {
+router.get('/assets', (req, res) => {
 	db_connection.knex
 		.select('assets.id', ' assets.hostname', ' assets.ip', ' users.name')
 		.from('assets')
@@ -24,7 +24,7 @@ router.get('/assets', async (req, res) => {
 		})
 })
 
-router.get('/addasset', async (req, res) => {
+router.get('/addasset', (req, res) => {
 	res.render('addasset', {
 		title: 'Добавить ассет',
 	})
@@ -48,9 +48,9 @@ router.get('/editasset/:assetid', (req, res) => {
 		.from('assets')
 		.where('id', req.params.assetid)
 		.then((result) => {
-			res.render('editassetform',{
+			res.render('editassetform', {
 				title: 'Редактирование ассета',
-				aAsset: result
+				aAsset: result,
 			})
 		})
 })
@@ -63,6 +63,16 @@ router.post('/editasset/:assetid', (req, res) => {
 			hostname: req.body.hostname,
 			ip: req.body.ip,
 		})
+		.then((result) => {
+			res.redirect('/assets')
+		})
+})
+
+router.get('/deleteasset/:assetid', (req, res) => {
+	db_connection
+		.knex('assets')
+		.where('id', req.params.assetid)
+		.delete()
 		.then((result) => {
 			res.redirect('/assets')
 		})

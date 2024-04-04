@@ -3,7 +3,6 @@
 <table id="example" class="table">
 	<thead>
 		<tr>
-			<th>ID</th>
 			<th>Hostname</th>
 			<th>IP-адрес</th>
 			<th>Пользователь</th>
@@ -12,22 +11,25 @@
 		</tr>
 	</thead>
 	<tbody>
-        <% tableData.forEach(item => { %>
-            <tr>
-                <td><%= item.id %></td>       
-                <td><%= item.hostname %></td>
-                <td><%= item.ip %></td>       
-                <td><%= item.name %></td>
-				<td>
-					<form action="/editasset/<%= item.id %> " method="get">
-						<button type="submit">Изменить</button>
-					</form>
-				</td>
-		    </tr>
-        <% }); %>
+		<% tableData.forEach(item => { %>
+		<tr>
+			<td><%= item.hostname %></td>
+			<td><%= item.ip %></td>
+			<td><%= item.name %></td>
+			<td>
+				<form action="/editasset/<%= item.id %> " method="get">
+					<button type="submit">Изменить</button>
+				</form>
+			</td>
+			<td>
+				<form action="/deleteasset/<%= item.id %> " method="get">
+					<button type="submit">Удалить</button>
+				</form>
+			</td>
+		</tr>
+		<% }); %>
 	</tbody>
-	<br>
-
+	<br />
 </table>
 
 <form action="/addasset" method="get">
