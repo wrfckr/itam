@@ -17,12 +17,12 @@
 			<td><%= item.ip %></td>
 			<td><%= item.name %></td>
 			<td>
-				<form action="/editasset/<%= item.id %> " method="get">
+				<form action="/asset/edit/<%= item.id %> " method="get">
 					<button type="submit">Изменить</button>
 				</form>
 			</td>
 			<td>
-				<form action="/deleteasset/<%= item.id %> " method="get">
+				<form action="/asset/delete/<%= item.id %> " method="get">
 					<button type="submit">Удалить</button>
 				</form>
 			</td>
@@ -32,6 +32,6 @@
 	<br />
 </table>
 
-<form action="/addasset" method="get">
+<form action="/asset/add" method="get">
 	<button type="submit">Добавить ассет</button>
 </form>

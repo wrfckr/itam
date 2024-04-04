@@ -6,14 +6,17 @@ const app = express()
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
 
+
 app.use(expressLayouts)
 app.set('layout', './layouts/default')
 app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({extended:true}))
 
-const router = require('./router')
-app.use('/', router)
+app.use('/', require('./routes/home'))
+app.use('/asset', require('./routes/asset'))
+
+
 
 let port = 3000
 app.listen(port, () => {
