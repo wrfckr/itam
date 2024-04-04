@@ -1,0 +1,23 @@
+<%- console.log(tableData) %>
+
+<table id="example" class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Hostname</th>
+			<th>IP-адрес</th>
+			<th>Пользователь</th>
+		</tr>
+	</thead>
+	<tbody>
+        <% tableData.forEach(item => { %>
+            <tr>
+                <td><%= item.id %></td>       
+                <td><%= item.hostname %></td>
+                <td><%= item.ip %></td>       
+                <td><%= item.name %></td>
+		    </tr>
+        <% }); %>
+	</tbody>
+</table>
+
