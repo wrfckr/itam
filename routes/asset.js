@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 		.from('assets')
 		.leftJoin('users', 'users.id', 'assets.user_id')
 		.then((resoults) => {
-			res.render('assets', {
+			res.render('asset/assets', {
 				title: 'Список',
 				layout: './layouts/for-assets',
 				tableData: resoults,
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/add', (req, res) => {
-	res.render('addasset', {
+	res.render('asset/addasset', {
 		title: 'Добавить ассет',
 	})
 })
@@ -40,7 +40,7 @@ router.get('/edit/:assetid', (req, res) => {
 		.from('assets')
 		.where('id', req.params.assetid)
 		.then((result) => {
-			res.render('editassetform', {
+			res.render('asset/editassetform', {
 				title: 'Редактирование ассета',
 				aAsset: result,
 			})

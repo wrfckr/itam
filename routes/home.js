@@ -3,7 +3,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     try {
-        res.render('index', { title: 'Главная страница' })
+        res.render('home', { title: 'Главная страница' })
     } catch (error) {
         res.status(500).send(error)
     }
