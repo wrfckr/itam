@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const db_connection = require('./db_connection')
 
 router.get('/', async (req, res) => {
@@ -24,5 +24,48 @@ router.get('/assets', async (req, res) => {
 		})
 })
 
+router.get('/addasset', async (req, res) => {
+	res.render('addasset', {
+		title: 'Добавить ассет',
+	})
+})
 
-module.exports = router;
+router.post('/addasset', (req, res) => {
+	db_connection
+		.knex('assets')
+		.insert({
+			hostname: req.body.hostname,
+			ip: req.body.ip,
+		})
+		.then((result) => {
+			res.redirect('/assets')
+		})
+})
+
+router.get('/editasset/:assetid', (req, res) => {
+	db_connection.knex
+		.select()
+		.from('assets')
+		.where('id', req.params.assetid)
+		.then((result) => {
+			res.render('editassetform',{
+				title: 'Редактирование ассета',
+				aAsset: result
+			})
+		})
+})
+
+router.post('/editasset/:assetid', (req, res) => {
+	db_connection
+		.knex('assets')
+		.where('id', req.params.assetid)
+		.update({
+			hostname: req.body.hostname,
+			ip: req.body.ip,
+		})
+		.then((result) => {
+			res.redirect('/assets')
+		})
+})
+
+module.exports = router

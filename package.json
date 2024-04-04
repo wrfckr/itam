@@ -1,4 +1,21 @@
 {
+  "name": "itam",
+  "version": "0.4.0",
+  "description": "simple itam",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wrfckr/itam.git"
+  },
+  "author": "avtetkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wrfckr/itam/issues"
+  },
+  "homepage": "https://github.com/wrfckr/itam#readme",
   "dependencies": {
     "ejs": "^3.1.9",
     "express": "^4.19.2",

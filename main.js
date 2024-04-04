@@ -10,10 +10,10 @@ app.use(expressLayouts)
 app.set('layout', './layouts/default')
 app.set('view engine', 'ejs')
 
+app.use(express.urlencoded({extended:true}))
 
 const router = require('./router')
 app.use('/', router)
-
 
 let port = 3000
 app.listen(port, () => {
