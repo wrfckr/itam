@@ -14,8 +14,10 @@ exports.getAssets = (req, res) => {
 		})
 }
 
+
+
 exports.addAssetGet = (req, res) => {
-	res.render('asset/addasset', {
+    res.render('asset/addasset', {
 		title: 'Добавить ассет',
 	})
 }
