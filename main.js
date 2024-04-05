@@ -10,11 +10,7 @@ app.use(expressLayouts)
 app.set('layout', './layouts/default')
 app.set('view engine', 'ejs')
 
-app.use(express.urlencoded({extended:true}))
-
-app.use('/', require('./routes/homeRouter'))
-app.use('/asset', require('./routes/assetRouter'))
-
+app.use(express.urlencoded({ extended: true }))
 
 app.use('/', require('./routes/homeRouter'))
 app.use('/asset', require('./routes/assetRouter'))
