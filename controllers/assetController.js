@@ -1,8 +1,6 @@
-const express = require('express')
-const router = express.Router()
 const db_connection = require('../db_connection')
 
-router.get('/', (req, res) => {
+exports.getAssets = (req, res) => {
 	db_connection.knex
 		.select('assets.id', ' assets.hostname', ' assets.ip', ' users.name')
 		.from('assets')
@@ -14,15 +12,17 @@ router.get('/', (req, res) => {
 				tableData: resoults,
 			})
 		})
-})
+}
 
-router.get('/add', (req, res) => {
-	res.render('asset/addasset', {
+
+
+exports.addAssetGet = (req, res) => {
+    res.render('asset/addasset', {
 		title: 'Добавить ассет',
 	})
-})
+}
 
-router.post('/add', (req, res) => {
+exports.addAssetPost = (req, res) => {
 	db_connection
 		.knex('assets')
 		.insert({
@@ -32,9 +32,9 @@ router.post('/add', (req, res) => {
 		.then((result) => {
 			res.redirect('/asset')
 		})
-})
+}
 
-router.get('/edit/:assetid', (req, res) => {
+exports.editAssetGet = (req, res) => {
 	db_connection.knex
 		.select()
 		.from('assets')
@@ -45,9 +45,9 @@ router.get('/edit/:assetid', (req, res) => {
 				aAsset: result,
 			})
 		})
-})
+}
 
-router.post('/edit/:assetid', (req, res) => {
+exports.editAssetPost = (req, res) => {
 	db_connection
 		.knex('assets')
 		.where('id', req.params.assetid)
@@ -58,9 +58,9 @@ router.post('/edit/:assetid', (req, res) => {
 		.then((result) => {
 			res.redirect('/asset')
 		})
-})
+}
 
-router.get('/delete/:assetid', (req, res) => {
+exports.deleteAsset = (req, res) => {
 	db_connection
 		.knex('assets')
 		.where('id', req.params.assetid)
@@ -68,7 +68,4 @@ router.get('/delete/:assetid', (req, res) => {
 		.then((result) => {
 			res.redirect('/asset')
 		})
-})
-
-
-module.exports = router
+}
