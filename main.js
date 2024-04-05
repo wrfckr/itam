@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/', require('./routes/homeRouter'))
 app.use('/asset', require('./routes/assetRouter'))
 
+app.use((req, res) => {
+	res.status(404).render('404', { title: '404' })
+})
+
 let port = 3000
 app.listen(port, () => {
 	console.log(`сервер запущен: http://localhost:${port}`)
