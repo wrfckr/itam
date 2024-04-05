@@ -4,16 +4,16 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title><%- title %></title>
-		<link rel="stylesheet" href="/css/assets.css" />
+		<link rel="stylesheet" href="/css/w3.css">
 	</head>
 	<body>
-		<div class="wrapper">
+
+		<nav><%- include('../partials/navigation.ejs') %></nav>
+
+
+		<div class="w3-container" >
 			<main class="main"><%- body %></main>
-			<aside class="aside">Тут будет доп инфа</aside>
 		</div>
 
-		<nav class="nav"><%- include('../partials/header.ejs') %></nav>
-
-		 <!--<footer class="footer"><%- include('../partials/footer.ejs') %></footer>-->
 	</body>
 </html>

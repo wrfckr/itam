@@ -1,5 +1,11 @@
-<form action="/asset/edit/<%= aAsset[0].id %> " method="post">
-	Hostname: <input type="text" name="hostname" value="<%=aAsset[0].hostname %>" /><br />
-	IP: <input type="text" name="ip" value="<%=aAsset[0].ip%>" /><br />
-	<button type="submit">Изменить ассет</button>
+<div class="w3-container w3-teal">
+	<h2>Добавление ассета</h2>
+</div>
+
+<form action="/asset/edit/<%= aAsset[0].id %> " method="post" class="w3-container">
+	<label class="w3-text"><b>Hostname: </b></label>
+	<input type="text" name="hostname" value="<%=aAsset[0].hostname %>" class="w3-input w3-border w3-light-grey"/><br />
+	<label class="w3-text"><b>IP: </b></label>
+	<input type="text" name="ip" value="<%=aAsset[0].ip%>" class="w3-input w3-border w3-light-grey"/><br />
+	<button type="submit" class="w3-btn w3-blue-grey">Изменить ассет</button>
 </form>
