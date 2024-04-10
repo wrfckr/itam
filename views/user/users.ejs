@@ -1,0 +1,46 @@
+<div class="w3-panel">
+	<form action="/user/add" method="get">
+		<button class="w3-button w3-round-large w3-teal" type="submit">Добавить пользователя</button>
+	</form>
+</div>
+<table class="w3-table-all w3-card-4">
+	<thead>
+		<tr>
+			<th>Имя</th>
+			<th>Отдел</th>
+			<th>Должность</th>
+			<th>Действия</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% tableData.forEach(item => { %>
+		<tr>
+			<td><%= item.name %></td>
+			<td><%= item.department %></td>
+			<td><%= item.position %></td>
+			<td>
+				<div class="w3-bar">
+					<form action="/user/edit/<%= item.id %> " method="get">
+						<button
+							id="dtnEdit"
+							class="w3-button w3-orange"
+							style="width: 100px"
+							type="submit"
+						>
+							Изменить
+						</button>
+					</form>
+
+					<form action="/user/delete/<%= item.id %> " method="get">
+						<button class="w3-button w3-red" style="width: 100px" type="submit">
+							Удалить
+						</button>
+					</form>
+				</div>
+			</td>
+		</tr>
+		<% }); %>
+	</tbody>
+
+	<br />
+</table>

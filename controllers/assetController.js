@@ -1,20 +1,23 @@
-const db = require('../db.config').knex
-
 const Asset = require('../models/asset.js')
+const User = require('../models/user.js')
+
 
 exports.getAssets = (req, res) => {
 	Asset.getAll((results) => {
 		res.render('asset/assets', {
-			title: 'Список',
-			layout: './layouts/for-assets',
+			title: 'Список ассетов',
+			// layout: './layouts/for-assets',
 			tableData: results,
 		})
 	})
 }
 
 exports.addAssetGet = (req, res) => {
-	res.render('asset/addasset', {
-		title: 'Добавить ассет',
+	User.getAll((results) => {
+		res.render('asset/addasset', {
+			title: 'Добавить ассет',
+			users: results,
+		})
 	})
 }
 
@@ -23,12 +26,20 @@ exports.addAssetPost = (req, res) => {
 }
 
 exports.editAssetGet = (req, res) => {
+	
+	let userList 
+	User.getAll((results) => {
+		userList =  results
+	})
+	
 	Asset.getById(req.params.assetid, (result) => {
 		res.render('asset/editassetform', {
 			title: 'Редактирование ассета',
 			aAsset: result,
+			users: userList
 		})
 	})
+	delete userList
 }
 
 exports.editAssetPost = (req, res) => {

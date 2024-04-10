@@ -13,12 +13,13 @@ module.exports = {
 			.insert({
 				hostname: data.hostname,
 				ip: data.ip,
+				user_id: data.user_id
 			})
 			.then(callback)
 	},
 
 	getById: function (id, callback) {
-		db.select().from('assets').where('id', id).then(callback)
+		db('assets').select('*').where('id', id).then(callback)
 	},
 
 	update: function (data, id, callback) {
@@ -27,6 +28,7 @@ module.exports = {
 			.update({
 				hostname: data.hostname,
 				ip: data.ip,
+				user_id: data.user_id
 			})
 			.then(callback)
 	},

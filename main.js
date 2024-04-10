@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/', require('./routes/homeRouter'))
 app.use('/asset', require('./routes/assetRouter'))
+app.use('/user', require('./routes/userRouter'))
 
 app.use((req, res) => {
 	res.status(404).render('404', { title: '404' })

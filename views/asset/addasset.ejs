@@ -7,5 +7,12 @@
 	<input type="text" name="hostname" class="w3-input w3-border w3-light-grey"/><br />
 	<label class="w3-text"><b>IP: </b></label>
 	<input type="text" name="ip" class="w3-input w3-border w3-light-grey"/><br />
+	<label class="w3-text"><b>Пользователь: </b></label>
+	<select name="user_id" class="w3-select w3-border w3-light-grey">
+		<option value="" disabled selected>Выберете пользователя</option>
+		<% users.forEach(user => { %>
+			<option value="<%= user.id %> "> <%= user.name %>  </option>
+		<% }); %>
+	</select>
 	<button type="submit" class="w3-btn w3-blue-grey">Добавить ассет</button>
 </form>

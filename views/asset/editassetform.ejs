@@ -1,5 +1,5 @@
 <div class="w3-container w3-teal">
-	<h2>Добавление ассета</h2>
+	<h2>Изменение ассета</h2>
 </div>
 
 <form action="/asset/edit/<%= aAsset[0].id %> " method="post" class="w3-container">
@@ -7,5 +7,17 @@
 	<input type="text" name="hostname" value="<%=aAsset[0].hostname %>" class="w3-input w3-border w3-light-grey"/><br />
 	<label class="w3-text"><b>IP: </b></label>
 	<input type="text" name="ip" value="<%=aAsset[0].ip%>" class="w3-input w3-border w3-light-grey"/><br />
+	<label class="w3-text"><b>Пользователь: </b></label>
+	<select name="user_id" class="w3-select w3-border w3-light-grey">
+		<option value="" selected></option>
+		<% users.forEach(user => { %>			
+			<option 
+				<% if (aAsset[0].user_id == user.id) { %> 
+					selected
+				<% } %>
+			value="<%= user.id %> "> <%= user.name %>  
+			</option>
+		<% }); %>
+	</select>
 	<button type="submit" class="w3-btn w3-blue-grey">Изменить ассет</button>
 </form>
