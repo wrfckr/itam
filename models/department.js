@@ -2,35 +2,31 @@ const db = require('../db.config').knex
 
 module.exports = {
 	getAll: function (callback) {
-		db('users').select('*').then(callback)
+		db('department').select('*').then(callback)
 	},
 
 	getById: function (id, callback) {
-		db('users').select('*').where('id', id).then(callback)
+		db('department').select('*').where('id', id).then(callback)
 	},
 
 	create: function (data, callback) {
-		db('users')
+		db('department')
 			.insert({
 				name: data.name,
-				department_id: data.department_id,
-				position: data.position,
 			})
 			.then(callback)
 	},
 
 	update: function (data, id, callback) {
-		db('users')
+		db('department')
 			.where('id', id)
 			.update({
 				name: data.name,
-				department_id: data.department_id,
-				position: data.position,
 			})
 			.then(callback)
 	},
 
 	delete: function (id, callback) {
-		db('users').where('id', id).delete().then(callback)
+		db('department').where('id', id).delete().then(callback)
 	}
 }

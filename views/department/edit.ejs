@@ -1,0 +1,9 @@
+<div class="w3-container w3-teal">
+	<h2>Изменение отдела</h2>
+</div>
+
+<form action="/department/edit/<%= aDepartment[0].id %> " method="post" class="w3-container">
+	<label class="w3-text"><b>Название: </b></label>
+	<input type="text" name="name" value="<%=aDepartment[0].name %>" class="w3-input w3-border w3-light-grey"/><br />
+	<button type="submit" class="w3-btn w3-blue-grey">Изменить отдел</button>
+</form>
