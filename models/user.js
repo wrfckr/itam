@@ -5,6 +5,13 @@ module.exports = {
 		db('users').select('*').then(callback)
 	},
 
+	getWithDepartment: function (callback){
+		db.select({id: 'users.id', name: 'users.name',	position: 'users.position' ,departmentname:  'department.name'})
+			.from('users')
+			.leftJoin('department', 'department.id', 'users.department_id')
+			.then(callback)
+	},
+
 	getById: function (id, callback) {
 		db('users').select('*').where('id', id).then(callback)
 	},

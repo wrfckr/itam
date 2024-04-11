@@ -2,7 +2,7 @@ const express = require('express')
 const userRouter = express.Router()
 const userController = require('../controllers/userController.js')
 
-userRouter.get('/', userController.get)
+userRouter.get('/', userController.getWithDepartment)
 
 userRouter.get('/&:userid', userController.getById)
 
@@ -15,6 +15,5 @@ userRouter.get('/edit/:userid', userController.editGet)
 userRouter.post('/edit/:userid', userController.editPost)
 
 userRouter.get('/delete/:userid', userController.delete)
-
 
 module.exports = userRouter

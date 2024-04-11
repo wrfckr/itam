@@ -6,7 +6,13 @@
 	<label class="w3-text"><b>Имя: </b></label>
 	<input type="text" name="name" class="w3-input w3-border w3-light-grey"/><br />
 	<label class="w3-text"><b>Отдел: </b></label>
-	<input type="text" name="department_id" class="w3-input w3-border w3-light-grey"/><br />
+	<select name="department_id" class="w3-select w3-border w3-light-grey">
+		<option value="" disabled selected>Выберете отдел</option>
+		<% departments.forEach(dep => { %>
+			<option value="<%= dep.id %> "> <%= dep.name %>  </option>
+		<% }); %>
+	</select>
+	<!-- <input type="text" name="department_id" class="w3-input w3-border w3-light-grey"/><br /> -->
 	<label class="w3-text"><b>Должность: </b></label>
 	<input type="text" name="position" class="w3-input w3-border w3-light-grey"/><br />
 	<button type="submit" class="w3-btn w3-blue-grey">Добавить пользователя</button>
