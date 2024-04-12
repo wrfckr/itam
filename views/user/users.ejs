@@ -20,22 +20,16 @@
 			<td><%= item.position %></td>
 			<td>
 				<div class="w3-bar">
-					<form action="/user/edit/<%= item.id %> " method="get">
-						<button
-							id="dtnEdit"
-							class="w3-button w3-orange"
-							style="width: 100px"
-							type="submit"
-						>
+					<form id="edit<%= item.id %>" action="/user/edit/<%= item.id %> " method="get"></form>
+					<form id="delete<%= item.id %>"  action="/user/delete/<%= item.id %> " method="get"></form>
+					<div class="w3-bar">
+						<button form="edit<%= item.id %>" id="dtnEdit" class="w3-button w3-orange" style="width: 100px" type="submit">
 							Изменить
 						</button>
-					</form>
-
-					<form action="/user/delete/<%= item.id %> " method="get">
-						<button class="w3-button w3-red" style="width: 100px" type="submit">
+						<button form="delete<%= item.id %>" class="w3-button w3-red" style="width: 100px" type="submit">
 							Удалить
 						</button>
-					</form>
+					</div>
 				</div>
 			</td>
 		</tr>
